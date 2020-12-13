@@ -18,14 +18,14 @@ First Delaunay triangulation is found using incremental approach. Then, Voronoi 
 ## :package: Installation
 :exclamation: Requirements: C++17, OpenGL, cmake, GoogleTest
 
-To install cmake using pacman package manager:
+1. To install cmake using pacman package manager:
 
     ```sh
     pacman -S cmake
 
     ```
 
-To install GoogleTest using pacman package manager:
+2. To install GoogleTest using pacman package manager:
 
     ```sh
     pacman -S gtest
