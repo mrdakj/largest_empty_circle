@@ -1,0 +1,13 @@
+find_package(OpenGL REQUIRED)
+find_package(GLUT REQUIRED)
+include_directories(${OPENGL_INCLUDE_DIRS}  ${GLUT_INCLUDE_DIRS})
+
+add_library (utility utility.cpp utility.h)
+add_library (dcel dcel.cpp dcel.h utility)
+add_library (graph graph.cpp graph.h)
+add_library (delaunay delaunay.cpp delaunay.h dcel graph utility)
+add_library (voronoi voronoi.cpp voronoi.h dcel utility)
+add_library (convex_hull convex_hull.cpp convex_hull.h dcel utility)
+add_library (largest_empty_circle largest_empty_circle.cpp largest_empty_circle.h dcel convex_hull utility)
+add_executable(main main.cpp)
+target_link_libraries (main delaunay voronoi convex_hull largest_empty_circle utility ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})
