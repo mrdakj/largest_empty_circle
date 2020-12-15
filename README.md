@@ -8,11 +8,11 @@ First Delaunay triangulation is found using incremental approach. Then, Voronoi 
 
 ![Alt text](out/4_circle_convex_hull.png?raw=true "Largest empty circle")
 
-![Alt text](out/2_delaunay.png?raw=true "Delaunay triangulation")
+![Alt text](out/7_delaunay.png?raw=true "Delaunay triangulation")
 
-![Alt text](out/2_voronoi.png?raw=true "Voronoi diagram")
+![Alt text](out/7_voronoi.png?raw=true "Voronoi diagram")
 
-![Alt text](out/2_circle.png?raw=true "Largest empty circle")
+![Alt text](out/7_circle.png?raw=true "Largest empty circle")
 
 ***
 ## :package: Installation
