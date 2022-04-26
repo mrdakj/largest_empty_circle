@@ -84,8 +84,8 @@ namespace util {
         util::point m_origin;
         util::point m_destination;
     };
-}
 
-std::ostream& operator<<(std::ostream& out, const util::point& p);
+    std::ostream& operator<<(std::ostream& out, const util::point& p);
+}
 
 #endif /* UTILITY_H */

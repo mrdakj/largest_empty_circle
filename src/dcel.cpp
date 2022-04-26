@@ -71,7 +71,7 @@ util::point dceltype::vertex::point() const
     return m_point;
 }
 
-std::ostream& operator<<(std::ostream& out, const dceltype::vertex& v)
+std::ostream& dceltype::operator<<(std::ostream& out, const dceltype::vertex& v)
 {
     return out << "(" << v.point() << "," << v.incident_edge() << ")";
 }
@@ -136,7 +136,7 @@ void dceltype::edge::set_face(int face)
     m_face = face;
 }
 
-std::ostream& operator<<(std::ostream& out, const dceltype::edge& e)
+std::ostream& dceltype::operator<<(std::ostream& out, const dceltype::edge& e)
 {
     return out << "(" << e.origin() << "," << e.twin() << "," << e.previous() << "," << e.next() << "," << e.face() << ")";
 }
@@ -157,7 +157,7 @@ int dceltype::face::edge() const
     return m_edge;
 }
 
-std::ostream& operator<<(std::ostream& out, const dceltype::face& f)
+std::ostream& dceltype::operator<<(std::ostream& out, const dceltype::face& f)
 {
     return out << "(" << f.edge() << ")";
 }

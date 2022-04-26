@@ -77,6 +77,10 @@ namespace dceltype {
     private:
         int m_edge;
     };
+
+    std::ostream& operator<<(std::ostream& out, const dceltype::vertex& v);
+    std::ostream& operator<<(std::ostream& out, const dceltype::edge& e);
+    std::ostream& operator<<(std::ostream& out, const dceltype::face& f);
 }
 
 enum class edgerelation { twin, previous, next };
@@ -261,9 +265,5 @@ private:
     std::vector<dceltype::edge> m_edges;
     std::vector<dceltype::face> m_faces;
 };
-
-std::ostream& operator<<(std::ostream& out, const dceltype::vertex& v);
-std::ostream& operator<<(std::ostream& out, const dceltype::edge& e);
-std::ostream& operator<<(std::ostream& out, const dceltype::face& f);
 
 #endif /* DCEL_H */

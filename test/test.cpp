@@ -863,7 +863,7 @@ TEST(convex_hull, interval_intersection)
 {
     delaunay del = {{{0, 0}, {0, 1.1}, {1, 0}, {1, 1}, {2,3.4}, {0.2,1.6}}};
     convex_hull ch{del.triangulation()};
-    
+
     // one intersection point
     ASSERT_EQ(ch.get_inersection({0.5,0.5}, {0.5,-1}), std::vector<util::point>{util::point(0.5,0)});
 

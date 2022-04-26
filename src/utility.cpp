@@ -119,7 +119,7 @@ util::point util::point::rotate_90(point a) const
     return {x_rotated, y_rotated};
 }
 
-std::ostream& operator<<(std::ostream& out, const util::point& p)
+std::ostream& util::operator<<(std::ostream& out, const util::point& p)
 {
     return out << "(" << p.x() << "," << p.y() << ")";
 }
