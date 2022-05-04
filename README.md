@@ -64,6 +64,8 @@ First Delaunay triangulation is found using incremental approach. Then, Voronoi 
     ```sh
     ./src/main input_file [delaunay] [voronoi] [convex_hull] [circle] [all_circles]
     ./src/main ../input/1.txt delaunay circle 
+    ./src/main random_points_count [delaunay] [voronoi] [convex_hull] [circle] [all_circles]
+    ./src/main 10 delaunay circle 
 
     ```
 

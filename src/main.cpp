@@ -2,7 +2,10 @@
 #include <iostream>
 #include <cmath>
 #include <unordered_set>
+#include <set>
 #include <fstream>
+#include <cstdlib>
+#include <ctime>
 
 #include "utility.h"
 #include "dcel.h"
@@ -21,6 +24,13 @@ option get_option(const std::string& option_string)
            (option_string == "all_circles") ? option::all_circles : 
            (option_string == "convex_hull") ? option::convex_hull : 
            option::unknown;
+}
+
+bool is_number(const std::string& s)
+{
+    std::string::const_iterator it = s.begin();
+    while (it != s.end() && std::isdigit(*it)) ++it;
+    return !s.empty() && it == s.end();
 }
 
 std::unordered_set<option> enabled_options;
@@ -178,10 +188,24 @@ std::vector<util::point> read_points(std::ifstream& input_file)
     return points;
 }
 
+std::vector<util::point> generate_random(int n)
+{
+    // use current time as seed for random generator
+    std::srand(std::time(nullptr));
+    std::vector<util::point> points;
+
+    for (int i = 0; i < n; i++) {
+        // get points from [0,]x[0,]
+        util::point p((double)std::rand()/(RAND_MAX/100), (double)std::rand()/(RAND_MAX/100));
+        points.emplace_back(std::move(p));
+    }
+    return points;
+}
+
 void init_window()
 {
-    glutInitWindowSize(600, 600);
-    glutInitWindowPosition((glutGet(GLUT_SCREEN_WIDTH)-600)/2, (glutGet(GLUT_SCREEN_HEIGHT)-600)/2);
+    glutInitWindowSize(1200, 1200);
+    glutInitWindowPosition((glutGet(GLUT_SCREEN_WIDTH)-1200)/2, (glutGet(GLUT_SCREEN_HEIGHT)-1200)/2);
     glutCreateWindow("The largest empty circle");
 }
 
@@ -192,13 +216,22 @@ int main(int argc, char** argv)
         return -1;
     }
 
-    std::ifstream input_file(argv[1]);
-    if (!input_file) {
-        std::cout << "file not found" << std::endl;
-        return -1;
+    if (is_number(argv[1]))
+    {
+        // generate random points
+        points = generate_random(std::atoi(argv[1]));
     }
+    else
+    {
+        // read point from file
+        std::ifstream input_file(argv[1]);
+        if (!input_file) {
+            std::cout << "file not found" << std::endl;
+            return -1;
+        }
 
-    points = read_points(input_file);
+        points = read_points(input_file);
+    }
 
     for (int i = 2; i < argc; ++i) {
         enabled_options.emplace(get_option(argv[i]));
